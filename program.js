@@ -1,16 +1,9 @@
 const express = require('express');
-const path = require('path');
-const bodyparser = require('body-parser');
 
-// create server
 const app = express();
-// const PORT = process.argv[2];
-// const DEST = process.argv[3];
+const PORT = process.argv[2];
 
-// applying middleware
-app.use(bodyparser.urlencoded({extend: false}));
-app.post('/form', (req, res) => {
-
+app.param('id', (req, res, next, id) => {
+  req.id = id;
 });
-
 app.listen(PORT);
